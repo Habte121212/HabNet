@@ -7,11 +7,19 @@ const { registerUser, loginUser } = require('../controller/auth')
 
 const social = require('../controller/social')
 
+// Middleware
+const auth = require('../middleware/auth')
+
 // Register a new user (email/password)
 router.post('/register', registerUser)
 
 // Login existing user
 router.post('/login', loginUser)
+
+// Check if user is authenticated (for ProtectedRoute)
+router.get('/check', auth, (req, res) => {
+  res.status(200).json({ authenticated: true })
+})
 
 // Initiate Google login
 router.get(

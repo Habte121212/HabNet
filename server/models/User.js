@@ -12,7 +12,10 @@ const UserSchema = new Schema({
   },
   password: {
     type: String,
-    required: true,
+    required: function () {
+      // Only require password for local provider
+      return !this.provider || this.provider === 'local'
+    },
   },
   createdAt: {
     type: Date,
@@ -28,7 +31,7 @@ const UserSchema = new Schema({
   },
   provider: {
     type: String,
-    enum: ['local', 'google', 'facebook'],
+    enum: ['local', 'google', 'facebook', 'github'],
     default: 'local',
   },
   providerId: {

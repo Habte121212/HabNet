@@ -32,7 +32,7 @@ $input-bg: #f8fafc;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 24px 0;
+    margin: 20px 0;
     transition: box-shadow 0.3s, transform 0.3s;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
@@ -83,6 +83,12 @@ $input-bg: #f8fafc;
           border-color: $success-green;
           background: #e7fbe9;
           animation: inputSuccess2025 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        &.error {
+          border-color: #ef4444 !important;
+          background: #fff1f2 !important;
+          animation: inputError2025 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
       }
 
@@ -222,17 +228,6 @@ $input-bg: #f8fafc;
           opacity: 0.7;
           cursor: not-allowed;
         }
-
-        &.facebook {
-          background: linear-gradient(90deg, #1877f2 0%, #145db2 100%);
-          color: #fff;
-          box-shadow: 0 2px 8px rgba(24, 119, 242, 0.13);
-
-          &:hover {
-            background: linear-gradient(90deg, #145db2 0%, #1877f2 100%);
-          }
-        }
-
         &.google {
           background: #fff;
           color: #222;
@@ -241,6 +236,36 @@ $input-bg: #f8fafc;
 
           &:hover {
             background: #f3f4f6;
+          }
+        }
+
+        &.github {
+          background: linear-gradient(90deg, #181717 0%, #333 100%);
+          color: #fff;
+          border: 1.5px solid #23272f;
+          box-shadow: 0 2px 8px rgba(24, 23, 23, 0.13);
+
+          &:hover {
+            background: linear-gradient(90deg, #23272f 0%, #181717 100%);
+            color: #a5b4fc;
+          }
+        }
+
+        &.loading {
+          opacity: 0.7;
+          pointer-events: none;
+          position: relative;
+
+          .loader {
+            margin-left: 8px;
+            width: 18px;
+            height: 18px;
+            border: 3px solid #fff;
+            border-top: 3px solid #6366f1;
+            border-radius: 50%;
+            animation: spinLoader 0.7s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
           }
         }
       }
@@ -255,7 +280,30 @@ $input-bg: #f8fafc;
       letter-spacing: 0.01em;
       opacity: 0.85;
     }
+
+    .errorMsg {
+      color: #ef4444;
+      font-size: 0.97rem;
+      margin: -10px 0 8px 4px;
+      text-align: left;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      animation: fadeIn 0.4s;
+    }
   }
+}
+
+// Prevent react-hot-toast overflow
+:global(.react-hot-toast) {
+  overflow: hidden !important;
+}
+:global(.react-hot-toast-container) {
+  overflow: hidden !important;
+}
+:global(.react-hot-toast__toast) {
+  max-width: 90vw;
+  overflow: hidden;
+  word-break: break-word;
 }
 
 // 3. Animations
@@ -312,6 +360,21 @@ $input-bg: #f8fafc;
   }
 }
 
+@keyframes inputError2025 {
+  0% {
+    box-shadow: 0 0 0 0 #ef444488;
+    transform: scale(1);
+  }
+  60% {
+    box-shadow: 0 0 0 12px #ef444400;
+    transform: scale(1.04);
+  }
+  100% {
+    box-shadow: 0 0 0 0 #ef444400;
+    transform: scale(1);
+  }
+}
+
 @keyframes spinLoader {
   0% {
     transform: rotate(0deg);
@@ -333,5 +396,81 @@ $input-bg: #f8fafc;
   100% {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes shakeError2025 {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+// Register.scss additions for hover and focus states
+/* Add these styles to register.scss for modern hover/focus UX */
+
+/* Register button hover/focus */
+.registerBtn {
+  transition: all 0.2s;
+  &:hover:not(:disabled),
+  &:focus-visible:not(:disabled) {
+    filter: brightness(1.08) saturate(1.2);
+    box-shadow: 0 4px 24px 0 rgba(30, 32, 40, 0.18);
+    outline: none;
+  }
+}
+.registerBtn.errorBtn {
+  &:hover:not(:disabled),
+  &:focus-visible:not(:disabled) {
+    filter: brightness(1.08) saturate(1.2);
+    box-shadow: 0 4px 24px 0 #ff222288;
+    outline: none;
+  }
+}
+
+/* Input hover/focus */
+.registerForm input {
+  transition: all 0.18s;
+  &:hover:not(:disabled),
+  &:focus-visible:not(:disabled) {
+    border-color: #00e6a2;
+    background: rgba(30, 32, 40, 0.13);
+    box-shadow: 0 2px 12px 0 #00e6a233;
+    outline: none;
+  }
+}
+.registerForm input[style*='#ff3b3b'],
+.registerForm input[style*='#ff2222'] {
+  &:hover:not(:disabled),
+  &:focus-visible:not(:disabled) {
+    border-color: #ff2222;
+    background: rgba(255, 34, 34, 0.1);
+    box-shadow: 0 2px 12px 0 #ff222288;
+    outline: none;
+  }
+}
+
+/* GitHub button hover/focus */
+.socialBtn.github {
+  transition: all 0.18s;
+  &:hover:not(:disabled),
+  &:focus-visible:not(:disabled) {
+    filter: brightness(1.12) saturate(1.2);
+    box-shadow: 0 4px 24px 0 #23252655;
+    outline: none;
   }
 }
