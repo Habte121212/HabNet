@@ -81,20 +81,5 @@
       text-shadow: 0 1px 4px #4f8cff33;
     }
   }
-  @media (max-width: 900px) {
-    width: 60px;
-    min-width: 60px;
-    padding: 18px 6px 6px 6px;
-    .leftbar-logo span {
-      display: none;
-    }
-    .leftbar-menu .menu-item {
-      justify-content: center;
-      gap: 0;
-      font-size: 0;
-      svg {
-        font-size: 24px;
-      }
-    }
-  }
+ 
 }
