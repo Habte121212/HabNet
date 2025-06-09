@@ -1,0 +1,100 @@
+.stories {
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  height: 250px;
+  margin-bottom: 30px;
+
+  .story {
+    flex: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 18px #4f8cff22, 0 1.5px 8px #5271ff11;
+    transition: box-shadow 0.18s, transform 0.18s;
+    cursor: pointer;
+    background: #eaf3ff;
+
+    &:hover {
+      box-shadow: 0 8px 32px #4f8cff33, 0 2px 12px #5271ff22;
+      transform: translateY(-4px) scale(1.04);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 3px solid transparent;
+      background: #fff;
+      box-shadow: 0 2px 8px #4f8cff22;
+      transition: border 0.2s;
+    }
+
+    
+    &:first-child img {
+      border: 3px solid;
+      border-image: linear-gradient(135deg, #4f8cff 60%, #6fd6ff 100%) 1;
+    }
+
+    span {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: white;
+      font-weight: 600;
+      text-shadow: 0 2px 8px #222a;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      z-index: 2;
+    }
+
+    button {
+      position: absolute;
+      bottom: 40px;
+      left: 10px;
+      background: linear-gradient(135deg, #4f8cff 60%, #6fd6ff 100%);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      width: 34px;
+      height: 34px;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #4f8cff22;
+      transition: background 0.18s, transform 0.15s;
+      z-index: 2;
+
+      &:hover {
+        background: linear-gradient(135deg, #6fd6ff 60%, #4f8cff 100%);
+        transform: scale(1.12);
+      }
+    }
+  }
+
+  .modern-share-btn {
+    background: linear-gradient(90deg, #6366f1 0%, #60a5fa 100%);
+    color: #fff;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px 0 rgba(80, 80, 120, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+
+    &:hover {
+      background: linear-gradient(90deg, #818cf8 0%, #38bdf8 100%);
+      box-shadow: 0 4px 16px 0 rgba(80, 80, 120, 0.13);
+      transform: translateY(-2px) scale(1.03);
+    }
+  }
+}

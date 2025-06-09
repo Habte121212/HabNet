@@ -1,0 +1,25 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(120deg, #eaf3ff 0%, #f7faff 100%);
+  // padding: 32px 0 0 0;
+}
+
+.home .container {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 22px;
+  box-shadow: 0 4px 24px #4f8cff11;
+  padding: 32px 18px 32px 18px;
+  margin-bottom: 32px;
+}
+
+

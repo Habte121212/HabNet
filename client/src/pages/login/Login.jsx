@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import '../register/register.scss'
+import './login.scss'
 import { toast } from 'react-hot-toast'
 import * as Yup from 'yup'
 import { useNavigate, Link } from 'react-router-dom'

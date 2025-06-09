@@ -1,0 +1,117 @@
+.navbar {
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, #232946 0%, #4f8cff 100%);
+  box-shadow: 0 4px 12px rgba(79, 140, 255, 0.3);
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  z-index: 100;
+  position: sticky;
+  left: 0;
+  top: 0;
+  color: #e0e7ef;
+  z-index: 9999;
+
+  .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 27px;
+
+    .language select {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ddd;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 2px 8px rgba(79, 140, 255, 0.15);
+      text-transform: uppercase;
+    }
+    
+    .language select:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .logo-link {
+      display: flex;
+      align-items: center;
+      img {
+        height: 23px;
+        width: 32px;
+        object-fit: contain;
+        filter: drop-shadow(0 2px 8px #4f8cff33);
+      }
+    }
+    .search {
+      margin-left: 50px;
+      input {
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: none;
+        background: #f4f7fb;
+        color: #232946;
+        font-size: 16px;
+        box-shadow: 0 2px 8px rgba(79, 140, 255, 0.07);
+        transition: box-shadow 0.2s, background 0.2s;
+        &:focus {
+          outline: none;
+          background: #e0e7ef;
+          box-shadow: 0 4px 16px #4f8cff22;
+        }
+      }
+    }
+    svg {
+      color: #e0e7ef;
+      font-size: 27px;
+      transition: color 0.2s;
+      cursor: pointer;
+      &:hover {
+        color: #a5b4fc;
+      }
+    }
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    svg {
+      color: #e0e7ef;
+      font-size: 27px;
+      transition: color 0.2s;
+      cursor: pointer;
+      &:hover {
+        color: #a5b4fc;
+      }
+    }
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 5px 14px 5px 8px;
+      box-shadow: 0 2px 8px #4f8cff11;
+      img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #4f8cff;
+        background: #fff;
+      }
+      span {
+        color: #fff;
+        font-weight: 600;
+        font-size: 17px;
+        letter-spacing: 0.16px;
+        text-shadow: 0 1px 4px #4f8cff33;
+      }
+    }
+  }
+  

@@ -1,4 +1,4 @@
-@use '../style.scss' as *;
+@use '../../style.scss' as *;
 // 1. SCSS Variables for reusability
 $primary-color: #6366f1;
 $primary-color-dark: #4f46e5;
@@ -167,24 +167,24 @@ $input-bg: #f8fafc;
     }
   }
 
-  .forgotBtn {
-    background: none;
-    border: none;
-    color: $primary-color;
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: underline;
-    transition: color 0.2s;
-    padding: 0;
-    margin: 0;
-    &:hover {
-      color: $primary-color-dark;
-    }
-    &:disabled {
-      color: $input-border;
-      cursor: not-allowed;
-    }
-  }
+  // .forgotBtn {
+  //   background: none !important;
+  //   border: none;
+  //   color: $primary-color;
+  //   font-size: 1rem;
+  //   cursor: pointer;
+  //   text-decoration: underline;
+  //   transition: color 0.2s;
+  //   padding: 0;
+  //   margin: 0;
+  //   &:hover {
+  //     color: $primary-color-dark;
+  //   }
+  //   &:disabled {
+  //     color: $input-border;
+  //     cursor: not-allowed;
+  //   }
+  // }
 
   .forgotModal {
     position: fixed;
@@ -198,42 +198,43 @@ $input-bg: #f8fafc;
     justify-content: center;
     z-index: 1000;
     animation: fadeInModal 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-    -webkit-backdrop-filter: blur(2.5px);
-    backdrop-filter: blur(2.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    backdrop-filter: blur(3.5px);
 
     .forgotForm {
       background: #fff;
-      border-radius: 14px;
+      border-radius: 16px;
       box-shadow: 0 8px 32px rgba(99, 102, 241, 0.18);
-      padding: 32px 28px 20px 28px;
+      padding: 36px 32px 24px 32px;
       min-width: 320px;
+      width: 100%;
+      max-width: 370px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 18px;
+      gap: 20px;
       animation: modalPop 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
       h2 {
         margin-bottom: 10px;
         color: $primary-color;
-        font-size: 1.3rem;
+        font-size: 1.35rem;
         font-weight: 700;
+        letter-spacing: 0.5px;
       }
 
       input {
-        width: 90%;
-        padding: 12px 14px;
+        width: 92%;
+        padding: 13px 15px;
         border: 1.5px solid $input-border;
-        border-radius: 7px;
+        border-radius: 8px;
         font-size: 1rem;
         background: $input-bg;
         color: $text-dark;
         transition: border-color 0.2s, box-shadow 0.2s;
-        @include mobile {
-          width: 80%;
-        }
         &::placeholder {
           color: $placeholder;
-          font-size: 0.95rem;
+          font-size: 0.97rem;
         }
         &:focus {
           border-color: $primary-color;
@@ -252,7 +253,7 @@ $input-bg: #f8fafc;
         background: linear-gradient(90deg, $primary-color 0%, #60a5fa 100%);
         color: #fff;
         border: none;
-        border-radius: 7px;
+        border-radius: 8px;
         font-size: 1.1rem;
         font-weight: 600;
         cursor: pointer;

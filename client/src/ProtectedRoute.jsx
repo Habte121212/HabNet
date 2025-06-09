@@ -1,26 +1,16 @@
+import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useContext } from 'react'
+import { AuthContext } from './context/AuthContext'
 
-// ProtectedRoute component for guarding routes
-function ProtectedRoute() {
-  const [loading, setLoading] = useState(true)
-  const [authenticated, setAuthenticated] = useState(false)
-
-  useEffect(() => {
-    // Check authentication status (cookie-based)
-    axios
-      .get('http://localhost:8500/api/auth/check', { withCredentials: true })
-      .then(() => setAuthenticated(true))
-      .catch(() => setAuthenticated(false))
-      .finally(() => setLoading(false))
-  }, [])
-
-  if (loading)
-    return (
-      <div style={{ textAlign: 'center', marginTop: '2rem' }}>Loading...</div>
-    )
-  return authenticated ? <Outlet /> : <Navigate to="/login" replace />
+const ProtectedRoute = () => {
+  const { currentUser } = useContext(AuthContext)
+  // If not logged in, redirect to login page
+  if (!currentUser) {
+    return <Navigate to="/login" replace />
+  }
+  // Otherwise, render the child routes
+  return <Outlet />
 }
 
 export default ProtectedRoute
