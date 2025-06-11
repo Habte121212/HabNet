@@ -3,7 +3,9 @@ const router = express.Router()
 const passport = require('../config/passport')
 
 // Controllers
-const { registerUser, loginUser } = require('../controller/auth')
+const { registerUser, loginUser, logoutuser } = require('../controller/auth')
+const { upload } = require('../multer/multer')
+const { uploadProfilePic, updateUserBio } = require('../controller/user')
 
 const social = require('../controller/social')
 
@@ -19,6 +21,11 @@ router.post('/login', loginUser)
 // Check if user is authenticated (for ProtectedRoute)
 router.get('/check', auth, (req, res) => {
   res.status(200).json({ authenticated: true })
+})
+
+// Get current authenticated user (for frontend session restore)
+router.get('/me', auth, (req, res) => {
+  res.status(200).json(req.user)
 })
 
 // Initiate Google login
@@ -46,5 +53,18 @@ router.get(
   passport.authenticate('github', { failureRedirect: '/login' }),
   social.githubCallback,
 )
+
+//logout
+router.post('/logout', logoutuser)
+
+// Profile picture upload (protected, with multer)
+router.post(
+  '/profile/upload',
+  auth,
+  upload.single('profilePic'),
+  uploadProfilePic,
+)
+// Update user bio (protected)
+router.post('/profile/bio', auth, updateUserBio)
 
 module.exports = router
